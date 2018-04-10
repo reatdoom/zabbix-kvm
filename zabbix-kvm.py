@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3.5
+#!/usr/bin/python
 import libvirt
 import json
 from optparse import OptionParser
@@ -31,7 +31,7 @@ def parse_args():
   return options
 def kvm_connect():
   try:
-    conn = libvirt.openReadOnly('qemu:///system')
+    conn = libvirt.openReadOnly('qemu+tcp://localhost:16509/system')
   except:
     sys.stderr.write("There was an error connecting to the local libvirt daemon using '"+uri+"'.")
     exit(1)
